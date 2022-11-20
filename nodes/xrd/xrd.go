@@ -109,16 +109,12 @@ func (x *xrd) createXRDFiles() error {
 	nodeCfg.ResStartupConfig = filepath.Join(x.cfg.LabDir, "xrd.conf")
 	x.cfg.EnforceStartupConfig = true
 
-	if x.cfg.StartupConfig == "" {
-		x.cfg.StartupConfig = "None"
-	}
-
 	err := nodeCfg.GenerateConfig(nodeCfg.ResStartupConfig, cfgTemplate)
 	if err != nil {
 		return err
 	}
 
-	if x.cfg.StartupConfig != "None" {
+	if x.cfg.StartupConfig != "" {
 
 		// Open file
 		file, err := os.OpenFile(nodeCfg.ResStartupConfig, os.O_WRONLY|os.O_APPEND, 0666)
@@ -130,7 +126,7 @@ func (x *xrd) createXRDFiles() error {
 		// Read static Startup Config
 		bytes, err := ioutil.ReadFile(x.cfg.StartupConfig)
 		if err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 		startupconfig := string(bytes)
 
