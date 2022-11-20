@@ -30,6 +30,5 @@ import (
 	_ "github.com/srl-labs/containerlab/nodes/vr_vqfx"
 	_ "github.com/srl-labs/containerlab/nodes/vr_xrv"
 	_ "github.com/srl-labs/containerlab/nodes/vr_xrv9k"
-	_ "github.com/srl-labs/containerlab/nodes/xrds"
-
+	_ "github.com/srl-labs/containerlab/nodes/xrd"
 )
